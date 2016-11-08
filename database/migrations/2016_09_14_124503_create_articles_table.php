@@ -21,6 +21,7 @@ class CreateArticlesTable extends Migration {
 			$table->text('description');
 			$table->text('price');
 			$table->integer('quantity');
+			$table->text('files');
 			$table->text('imgs');
 			$table->integer('priority')->default(0);
 			$table->timestamp('date');

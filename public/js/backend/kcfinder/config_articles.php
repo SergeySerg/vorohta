@@ -13,12 +13,12 @@ $_CONFIG = array(
     'types' => array(
 
         // (F)CKEditor types
-        'files'   =>  "",
+        'files'   =>  "doc docx pdf xls xlsx",
         'flash'   =>  "swf",
         'images'  =>  "*img",
 
         // TinyMCE types
-        'file'    =>  "",
+        'file'    =>  "doc docx pdf xls xlsx",
         'media'   =>  "swf flv avi mpg mpeg qt mov wmv asf rm",
         'image'   =>  "*img",
     ),
@@ -33,8 +33,8 @@ $_CONFIG = array(
     'maxImageWidth' => 0,
     'maxImageHeight' => 0,
 
-    'thumbWidth' => 300,
-    'thumbHeight' => 200,
+    'thumbWidth' => 150,
+    'thumbHeight' => 100,
 
     'watermark' => "",
 

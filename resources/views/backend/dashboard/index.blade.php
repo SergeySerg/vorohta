@@ -15,7 +15,7 @@
         <div class="span12">
             <!--PAGE CONTENT BEGINS-->
             <div class="row-fluid">
-                <h3 class="header smaller lighter blue">Панель керування PremiumClub</h3>
+                <h3 class="header smaller lighter blue">Панель керування сайту Vorohta.org</h3>
 
                 <div class="alert alert-info">
                     <button type="button" class="close" data-dismiss="alert">

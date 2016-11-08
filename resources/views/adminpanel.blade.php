@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PremiumClub | Панель керування</title>
+    <title>Ворохта| Панель керування</title>
 
     <link rel="shortcut icon" href="{{ asset('/img/favicon/favicon.ico') }}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{{ asset('/img/favicon/apple-touch-icon.png') }}">
@@ -88,12 +88,6 @@
 
             <ul class="nav ace-nav pull-right">
 
-                <li class="purple">
-                    <a  class="dropdown-toggle" target="_blank" href="{{ asset('/') }}">
-                        <span class="badge badge-important">Перейти на сайт</span>
-                    </a>
-                </li>
-
                 <li class="light-blue">
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                         <img class="nav-user-photo" src="{{ asset('/img/backend/vorohta.gif') }}" alt="Vorohta" />
@@ -106,14 +100,14 @@
                     </a>
 
                     <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-closer">
-                        <!-- <li>
-                             <a href="#">
+                         <li>
+                             <a  target="_blank" href="{{ asset('/') }}">
                                  <i class="icon-cog"></i>
-                                 Settings
+                                 Перейти на сайт
                              </a>
                          </li>
 
-                         <li>
+                        <!-- <li>
                              <a href="#">
                                  <i class="icon-user"></i>
                                  Profile
@@ -159,37 +153,37 @@
 
         <ul class="nav nav-list">
 
-            <li @if(Request::is('*/hotel'))class="active"@endif>
-            <a href="{{ $url }}/articles/hotel">
+            <li @if(Request::is('*/main'))class="active"@endif>
+            <a href="{{ $url }}/articles/main">
                 <i class="icon-text-width"></i>
-                <span class="menu-text"> Готель </span>
+                <span class="menu-text"> Головна </span>
             </a>
             </li>
 
-            <li @if(Request::is('*/rooms'))class="active"@endif>
-            <a href="{{ $url }}/articles/rooms">
+            <li @if(Request::is('*/government'))class="active"@endif>
+            <a href="{{ $url }}/articles/government">
                 <i class="icon-home"></i>
-                <span class="menu-text"> Номери </span>
+                <span class="menu-text"> Влада </span>
             </a>
             </li>
 
-            <li @if(Request::is('*/services'))class="active"@endif>
-            <a href="{{ $url }}/articles/services">
+            <li @if(Request::is('*/about_us'))class="active"@endif>
+            <a href="{{ $url }}/articles/about_us">
                 <i class="icon-list"></i>
-                <span class="menu-text"> Послуги </span>
+                <span class="menu-text"> Про Ворохту </span>
             </a>
             </li>
 
-            {{-- <li @if(Request::is('admin30x5/article/events'))class="active"@endif>
-            <a href="{{ $url }}/articles/events">
+            <li @if(Request::is('*/tourist'))class="active"@endif>
+            <a href="{{ $url }}/articles/tourist">
                 <i class="icon-hospital"></i>
-                <span class="menu-text"> Події </span>
+                <span class="menu-text"> Туритсту </span>
             </a>
-            </li> --}}
+            </li>
             <li @if(Request::is('*/gallery'))class="active"@endif>
             <a href="{{ $url }}/articles/gallery">
                 <i class="icon-picture"></i>
-                <span class="menu-text"> Галерея </span>
+                <span class="menu-text"> Фотогалерея </span>
             </a>
             </li>
             <li @if(Request::is('*/slider'))class="active"@endif>
@@ -198,6 +192,16 @@
                 <span class="menu-text"> Слайдер </span>
             </a>
             </li>
+            <li @if(Request::is('*/news'))class="active"@endif>
+            <a href="{{ $url }}/articles/news">
+                <i class="icon-list"></i>
+                <span class="menu-text"> Новини </span>
+            </a>
+            <li @if(Request::is('*/advertising'))class="active"@endif>
+            <a href="{{ $url }}/articles/advertising">
+                <i class="icon-list"></i>
+                <span class="menu-text"> Реклама </span>
+            </a>
             <li @if(Request::is('*/seo'))class="active"@endif>
             <a href="{{ $url }}/articles/seo">
 
