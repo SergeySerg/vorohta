@@ -6,7 +6,7 @@
 
     @foreach($about_us as $about_us_item)
 
-        <div class="panel panel-default wow fadeInLeft">
+        <div class="panel panel-default wow fadeInLeft" id="about_us-{{ $about_us_item -> id }}">
 
             <div class="panel-heading">{{ $about_us_item -> getTranslate('title') }}</div>
 

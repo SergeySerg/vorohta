@@ -56,18 +56,29 @@
 	<div class="row">
 
 		<div class="col-md-12">
+
 			<nav class="navbar navbar-default">
+
 				<div class="container-fluid">
+
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<div class="navbar-header">
+
 						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
 							<span class="sr-only">Toggle navigation</span>
+
 							<span class="icon-bar"></span>
+
 							<span class="icon-bar"></span>
+
 							<span class="icon-bar"></span>
+
 						</button>
+
 						<a class="navbar-brand" href="/{{ App::getLocale() }}">
+
 							<img alt="Головна" src="../img/frontend/logo.png">
+
 						</a>
 					</div>
 
@@ -80,36 +91,48 @@
 							<li @if(Request::is('*/about_us')) class="dropdown active"@else class="dropdown"@endif>
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-area-chart" aria-hidden="true"></i><br>Про Ворохту<span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="/{{ App::getLocale() }}/about_us">Ворохта - історія та сьогодення</a></li>
-									<li><a href="#">Інфраструктура туристичного курорту</a></li>
-									<li><a href="#">Ворохта відпочинок взимку</a></li>
-									<li><a href="#">Ворохта відпочинок влітку</a></li>
-									<li><a href="#">Кухня, звичаї, традиції</a></li>
+
+									@foreach($about_us as $about_us_item)
+
+										<li><a href="/{{ App::getLocale() }}/about_us/#about_us-{{ $about_us_item -> id }}">{{ $about_us_item -> getTranslate('title') }}</a></li>
+
+									@endforeach
+
 								</ul>
 							</li>
+
 							<li class="dropdown">
+
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-blind" aria-hidden="true"></i><br>Туристу<span class="caret"></span></a>
+
 								<ul class="dropdown-menu">
-									<li><a href="/{{ App::getLocale() }}/tourist">Як добратися</a></li>
-									<li><a href="#">Заклади проживання</a></li>
-									<li><a href="#">Заклади харчування</a></li>
+
+									@foreach($tourist as $tourist_item)
+
+										<li><a href="/{{ App::getLocale() }}/tourist/#tourist-{{ $tourist_item -> id }}">{{ $tourist_item -> getTranslate('title') }}</a></li>
+
+									@endforeach
+
 								</ul>
+
 							</li>
+
 							<li>
 								<a href="/{{ App::getLocale() }}/gallery"><i class="fa fa-picture-o" aria-hidden="true"></i><br>Фотогалерея</a>
 							</li>
+
 							<li class="dropdown">
+
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book" aria-hidden="true"></i><br>Влада<span class="caret"></span></a>
+
 								<ul class="dropdown-menu">
-									<li><a href="/{{ App::getLocale() }}/government">Керівна ланка селищної влади</a></li>
-									<li><a href="#">Прийом громадян</a></li>
-									<li><a href="#">Регуляторна політика</a></li>
-									<li><a href="#">Податкова політика</a></li>
-									<li><a href="#">Рішення селищної ради</a></li>
-									<li><a href="#">Протоколи загальних зборів ...</a></li>
-									<li><a href="#">Розпорядження селищного голови</a></li>
-									<li><a href="#">Про-ти рішень селищної ради</a></li>
-									<li><a href="#">Державні закупівлі</a></li>
+
+									@foreach($government as $government_item)
+
+										<li><a href="/{{ App::getLocale() }}/government/#$government-{{ $government_item -> id }}">{{ $government_item -> getTranslate('title') }}</a></li>
+
+									@endforeach
+
 								</ul>
 							</li>
 						</ul>

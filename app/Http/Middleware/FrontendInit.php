@@ -41,6 +41,18 @@ class FrontendInit {
 			->where('active','=', '1')
 			->get()
 			->sortByDesc("priority");
+		$about_us = Category::where('link','=', 'about_us')
+			->first()
+			->articles()
+			->where('active','=', '1')
+			->get()
+			->sortByDesc("priority");
+		$tourist = Category::where('link','=', 'tourist')
+			->first()
+			->articles()
+			->where('active','=', '1')
+			->get()
+			->sortByDesc("priority");
 		$government = Category::where('link','=', 'government')
 			->first()
 			->articles()
@@ -82,6 +94,8 @@ class FrontendInit {
 		view()->share('news', $news);
 		view()->share('slides', $slides);
 		view()->share('government', $government);
+		view()->share('about_us',$about_us);
+		view()->share('tourist',$tourist);
 		view()->share('advertising', $advertising);
 		view()->share('texts', $texts->init());
 		view()->share('version', config('app.version'));
