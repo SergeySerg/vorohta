@@ -3,11 +3,11 @@
 <head>
 	<meta charset="utf-8">
 	<title>Ворохта</title>
-{{--
-	<meta name="title" content="{{ $meta ->getTranslate('meta_title') }}">
-	<meta name="description" content="{{ $meta ->getTranslate('meta_description') }}">
-	<meta name="keywords" content="{{ $meta ->getTranslate('meta_keywords') }}">
---}}
+	@if($meta)
+		<meta name="title" content="{{ $meta ->getTranslate('meta_title') }}">
+		<meta name="description" content="{{ $meta ->getTranslate('meta_description') }}">
+		<meta name="keywords" content="{{ $meta ->getTranslate('meta_keywords') }}">
+	@endif
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,9 +26,9 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link href="{{ asset('/css/plugins/sweetalert.css') }}" rel="stylesheet">
 	<!-- Bootstrap core CSS -->
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<link href="css/font-awesome.min.css" rel="stylesheet">
-	<link href="css/main.css?ver1" rel="stylesheet">
+	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet">
+	<link href="{{ asset('css/main.css') }}?ver={{ $version }}" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -74,10 +74,10 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right r-menu">
-							<li class="active">
+							<li @if(Request::is('ua')) class="active"@endif>
 								<a href="/{{ App::getLocale() }}"><i class="fa fa-home"></i><br>Головна</a>
 							</li>
-							<li class="dropdown">
+							<li @if(Request::is('*/about_us')) class="dropdown active"@else class="dropdown"@endif>
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-area-chart" aria-hidden="true"></i><br>Про Ворохту<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li><a href="/{{ App::getLocale() }}/about_us">Ворохта - історія та сьогодення</a></li>
@@ -90,18 +90,18 @@
 							<li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-blind" aria-hidden="true"></i><br>Туристу<span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="#">Як добратися</a></li>
+									<li><a href="/{{ App::getLocale() }}/tourist">Як добратися</a></li>
 									<li><a href="#">Заклади проживання</a></li>
 									<li><a href="#">Заклади харчування</a></li>
 								</ul>
 							</li>
 							<li>
-								<a href="#"><i class="fa fa-picture-o" aria-hidden="true"></i><br>Фотогалерея</a>
+								<a href="/{{ App::getLocale() }}/gallery"><i class="fa fa-picture-o" aria-hidden="true"></i><br>Фотогалерея</a>
 							</li>
 							<li class="dropdown">
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book" aria-hidden="true"></i><br>Політика<span class="caret"></span></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book" aria-hidden="true"></i><br>Влада<span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="#">Керівна ланка селищної влади</a></li>
+									<li><a href="/{{ App::getLocale() }}/government">Керівна ланка селищної влади</a></li>
 									<li><a href="#">Прийом громадян</a></li>
 									<li><a href="#">Регуляторна політика</a></li>
 									<li><a href="#">Податкова політика</a></li>
@@ -127,10 +127,7 @@
 		<div class="col-md-12">
 
 			<!-- start: Slider -->
-			<div id="webstudio-slider" style="display:none;
-											  margin-bottom: 20px;
-                                              border-radius: 5px;
-                                              box-shadow: 0 0 15px rgba(0,0,0, .15);">
+			<div id="webstudio-slider" style="display:none;">
 				@foreach($slides as $slide)
 
 					@if(count($slide->getImages()) > 0)
@@ -160,107 +157,50 @@
 
 			@yield('content')
 
-{{--
-			<div class="panel panel-default wow fadeInLeft">
-				<div class="panel-heading">Погода в Ворохті</div>
-
-				<div class="panel-body">
-					<div class="col-sm-4 col-md-3">
-						<a href="#" class="thumbnail">
-							<img src="http://www.ecml.at/Portals/1/Blog/Fotolia_53921830_Srussian.jpg" alt="...">
-						</a>
-					</div>
-					<div class="col-sm-8 col-md-9">
-						<p>EUROSTANDARD sp. z o.o. є фірма, що надає спеціалізовані послуги в сфері забезпечення персоналом
-							(аутсорсинг персоналу або лізинг працівників). На Замовлення наших клієнтів ми формуємо бригади
-							працівників відповідної спеціальності та кваліфікації та делегуємо їх для виконання завданнь
-							таких замовників. Ми беремо на себе повністю обовязки роботодавця, забезпечуючи фірмі, що
-							користується робочою силою виключно організацію виробничих процесів. Особливістю нашого підприємства
-							є те, що EUROSTANDARD sp. z o.o. є оператором надання послуг на території Польщі  нашого дочірнього
-							підприємства Приватне підприємство міжнародне кадрове агентство «Європейський Стандарт» (Україна,
-							м. Луцьк). Працівники працевлаштовані на українській фірмі та направляються у відрядження на
-							EUROSTANDARD sp. z o.o., яке, в свою чергу надає послуги польским клієнтам.
-						</p>
-						<a href="#" class="pull-right">Детальніше<i class="fa fa-angle-right fa-lg"></i></a>
-					</div>
-				</div>
-			</div>
---}}
-
 		</div>
 
 		<div class="col-md-4">
 
 			<div class="panel panel-default wow fadeInLeft">
-				<div class="panel-heading">Новини</div>
+				<div class="panel-heading">Погода у Ворохті</div>
 
 				<div class="panel-body">
-					<div class="col-sm-4 col-md-3">
-						<a href="#" class="thumbnail">
-							<img src="http://www.ecml.at/Portals/1/Blog/Fotolia_53921830_Srussian.jpg" alt="...">
-						</a>
+					<!-- Gismeteo informer START -->
+					<link rel="stylesheet" type="text/css" href="https://s1.gismeteo.ua/static/css/informer2/gs_informerClient.min.css">
+					<div id="gsInformerID-5vvwaYqMw08ThS" class="gsInformer" style="width:240px;height:157px; margin:auto">
+						<div class="gsIContent">
+							<div id="cityLink">
+								<a href="https://www.gismeteo.ua/ua/weather-vorokhta-11858/" target="_blank">Погода у Ворохті</a>
+							</div>
+							<div class="gsLinks">
+								<table>
+									<tr>
+										<td>
+											<div class="leftCol">
+												<a href="https://www.gismeteo.ua/ua" target="_blank">
+													<img alt="Gismeteo" title="Gismeteo" src="https://s1.gismeteo.ua/static/images/informer2/logo-mini2.png" align="absmiddle" border="0" />
+													<span>Gismeteo</span>
+												</a>
+											</div>
+											<div class="rightCol">
+												<a href="https://www.gismeteo.ua/ua/weather-vorokhta-11858/" target="_blank">Погода на 2 тижні</a>
+											</div>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
 					</div>
-					<div class="col-sm-8 col-md-9">
-						<p>EUROSTANDARD sp. z o.o. є фірма, що надає спеціалізовані послуги в сфері забезпечення персоналом
-							(аутсорсинг персоналу або лізинг працівників). На Замовлення наших клієнтів ми формуємо бригади
-							працівників відповідної спеціальності та кваліфікації та делегуємо їх для виконання завданнь
-							таких замовників. Ми беремо на себе повністю обовязки роботодавця, забезпечуючи фірмі, що
-							користується робочою силою виключно організацію виробничих процесів. Особливістю нашого підприємства
-							є те, що EUROSTANDARD sp. z o.o. є оператором надання послуг на території Польщі  нашого дочірнього
-							підприємства Приватне підприємство міжнародне кадрове агентство «Європейський Стандарт» (Україна,
-							м. Луцьк). Працівники працевлаштовані на українській фірмі та направляються у відрядження на
-							EUROSTANDARD sp. z o.o., яке, в свою чергу надає послуги польским клієнтам.
-						</p>
-						<a href="#" class="pull-right">Детальніше<i class="fa fa-angle-right fa-lg"></i></a>
-					</div>
+					<script src="https://www.gismeteo.ua/ajax/getInformer/?hash=5vvwaYqMw08ThS" type="text/javascript"></script>
+					<!-- Gismeteo informer END -->
 				</div>
 			</div>
+
 			<div class="panel panel-default wow fadeInLeft">
 				<div class="panel-heading">Реклама</div>
 
 				<div class="panel-body">
-					<div class="col-sm-4 col-md-3">
-						<a href="#" class="thumbnail">
-							<img src="http://www.ecml.at/Portals/1/Blog/Fotolia_53921830_Srussian.jpg" alt="...">
-						</a>
-					</div>
-					<div class="col-sm-8 col-md-9">
-						<p>EUROSTANDARD sp. z o.o. є фірма, що надає спеціалізовані послуги в сфері забезпечення персоналом
-							(аутсорсинг персоналу або лізинг працівників). На Замовлення наших клієнтів ми формуємо бригади
-							працівників відповідної спеціальності та кваліфікації та делегуємо їх для виконання завданнь
-							таких замовників. Ми беремо на себе повністю обовязки роботодавця, забезпечуючи фірмі, що
-							користується робочою силою виключно організацію виробничих процесів. Особливістю нашого підприємства
-							є те, що EUROSTANDARD sp. z o.o. є оператором надання послуг на території Польщі  нашого дочірнього
-							підприємства Приватне підприємство міжнародне кадрове агентство «Європейський Стандарт» (Україна,
-							м. Луцьк). Працівники працевлаштовані на українській фірмі та направляються у відрядження на
-							EUROSTANDARD sp. z o.o., яке, в свою чергу надає послуги польским клієнтам.
-						</p>
 						<a href="#" class="pull-right">Детальніше<i class="fa fa-angle-right fa-lg"></i></a>
-					</div>
-				</div>
-			</div>
-			<div class="panel panel-default wow fadeInLeft">
-				<div class="panel-heading">Коротко про нас</div>
-
-				<div class="panel-body">
-					<div class="col-sm-4 col-md-3">
-						<a href="#" class="thumbnail">
-							<img src="http://www.ecml.at/Portals/1/Blog/Fotolia_53921830_Srussian.jpg" alt="...">
-						</a>
-					</div>
-					<div class="col-sm-8 col-md-9">
-						<p>EUROSTANDARD sp. z o.o. є фірма, що надає спеціалізовані послуги в сфері забезпечення персоналом
-							(аутсорсинг персоналу або лізинг працівників). На Замовлення наших клієнтів ми формуємо бригади
-							працівників відповідної спеціальності та кваліфікації та делегуємо їх для виконання завданнь
-							таких замовників. Ми беремо на себе повністю обовязки роботодавця, забезпечуючи фірмі, що
-							користується робочою силою виключно організацію виробничих процесів. Особливістю нашого підприємства
-							є те, що EUROSTANDARD sp. z o.o. є оператором надання послуг на території Польщі  нашого дочірнього
-							підприємства Приватне підприємство міжнародне кадрове агентство «Європейський Стандарт» (Україна,
-							м. Луцьк). Працівники працевлаштовані на українській фірмі та направляються у відрядження на
-							EUROSTANDARD sp. z o.o., яке, в свою чергу надає послуги польским клієнтам.
-						</p>
-						<a href="#" class="pull-right">Детальніше<i class="fa fa-angle-right fa-lg"></i></a>
-					</div>
 				</div>
 			</div>
 
@@ -310,8 +250,7 @@
 <script src="{{ asset('/js/plugins/sweetalert.min.js') }}"></script>
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script><!-- start: Java Script -->
-<script src="unitegallery/js/jquery-11.0.min.js"></script>
-<script src="js/bootstrap.js"></script>
+<script src="{{ asset('js/bootstrap.js') }}"></script>
 
 <script src="http://azmind.com/demo/andia-agency/v2-1/assets/js/wow.min.js" type="application/javascript"></script>
 <script>

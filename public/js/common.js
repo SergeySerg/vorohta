@@ -25,6 +25,13 @@
 		 slider_enable_bullets: false,
 	 });
 
+	 $('.webstudio-gallery').each(function(){
+		 $(this).unitegallery({
+			 gallery_theme: "tiles",
+			 tiles_type: "justified",
+		 });
+	 });
+	 
 	 $(window).on('scroll', function(){
 		 var scrollPosition = $(this).scrollTop();
 		 if(scrollPosition > 100){
@@ -52,4 +59,5 @@
 		 }
 	 );
 
+	 
  });

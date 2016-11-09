@@ -190,3 +190,27 @@ footer .navbar-brand{
 footer .navbar-text {
     font-size: 16px;
 }
+.title_page{
+    font-size: 35px;
+    color: #007736;
+    padding-left: 50px;
+    padding-bottom: 20px;
+}
+.navbar-default .navbar-nav>.open>a,
+.navbar-default .navbar-nav>.open>a:focus,
+.navbar-default .navbar-nav>.open>a:hover{
+    color: #555;
+    background-color: #EDEDCB;
+    border-top: 3px solid #9bb36e;
+    padding-top: 17px;
+}
+.navbar-fixed-top .navbar-nav>.open>a,
+.navbar-fixed-top .navbar-nav>.open>a:focus,
+.navbar-fixed-top .navbar-nav>.open>a:hover{
+    padding-top: 7px;
+}
+#webstudio-slider{
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0,0,0, .15);
+}

@@ -47,6 +47,18 @@ class FrontendInit {
 			->where('active','=', 1)
 			->get()
 			->sortByDesc("priority");
+		$slides = Category::where('link','=', 'slider')
+			->first()
+			->articles()
+			->where('active','=', 1)
+			->get()
+			->sortByDesc("priority");
+		$advertising = Category::where('link','=', 'advertising')
+			->first()
+			->articles()
+			->where('active','=', 1)
+			->get()
+			->sortByDesc("priority");
 
 		$texts = new Text();
 
@@ -68,7 +80,9 @@ class FrontendInit {
 		view()->share('langs', Lang::all());
 		view()->share('main', $main);
 		view()->share('news', $news);
+		view()->share('slides', $slides);
 		view()->share('government', $government);
+		view()->share('advertising', $advertising);
 		view()->share('texts', $texts->init());
 		view()->share('version', config('app.version'));
         //view()->share('meta', $meta);

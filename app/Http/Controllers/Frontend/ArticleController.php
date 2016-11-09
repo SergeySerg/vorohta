@@ -22,20 +22,17 @@ class ArticleController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index($lang, $type = 'hotel')
+	public function index($lang, $type = 'main')
 	{
 		$events = null;
 		$gallery = null;
 		$slides = null;
+		$about_us = null;
+		$tourist = null;
+		$government = null;
 
 		switch($type){
-            case 'hotel':
-				$slides = Category::where('link','=', 'slider')
-					->first()
-					->articles()
-					->where('active','=', 1)
-					->get()
-					->sortByDesc("priority");
+            case 'main':
 				break;
 			case 'rooms':
 				break;
@@ -43,6 +40,18 @@ class ArticleController extends Controller {
 				break;
 			case 'events':
                 $events = Category::where('link','=', 'events')
+                    ->first()
+                    ->articles
+					->sortByDesc("priority");
+				break;
+			case 'about_us':
+                $about_us = Category::where('link','=', 'about_us')
+                    ->first()
+                    ->articles
+					->sortByDesc("priority");
+				break;
+			case 'tourist':
+                $tourist = Category::where('link','=', 'tourist')
                     ->first()
                     ->articles
 					->sortByDesc("priority");
@@ -55,16 +64,26 @@ class ArticleController extends Controller {
 					->get()
 					->sortByDesc("priority");
 				break;
+			case 'government':
+				$government = Category::where('link','=', 'government')
+                    ->first()
+                    ->articles()
+					->where('active','=', 1)
+					->get()
+					->sortByDesc("priority");
+				break;
 
 		}
 
-		 $meta = view()->share('meta', Article::where('name', '=', 'meta.'.$type)->first());
+		$meta = view()->share('meta', Article::where('name', '=', 'meta.'.$type)->first());
 
 
 		return view('frontend.'.$type, [
 			'events' => $events,
 			'gallery' => $gallery,
-			'slides' => $slides,
+			'about_us' => $about_us,
+			'tourist' => $tourist,
+			'government' => $government,
 
 		]);
 	}
