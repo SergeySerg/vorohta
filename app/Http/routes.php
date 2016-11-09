@@ -82,7 +82,7 @@ Route::group(['prefix'=>'admin30x5', 'middleware' => ['auth', 'backend.init']], 
 Route::group(['middleware' => 'frontend.init'], function(){
 	Route::get('/{lang}/booking', 'Frontend\BookingController@index');
 	Route::get('/{lang}/3dtour', 'Frontend\TourController@index');
-	Route::get('/{lang}/{type?}', 'Frontend\ArticleController@index')->where('type', 'hotel|rooms|services|events|gallery|contact|3dtour');;
+	Route::get('/{lang}/{type?}', 'Frontend\ArticleController@index')->where('type', 'main|government|about_us|tourist|gallery|news|advertising');;
 });
 
 

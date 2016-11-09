@@ -2,32 +2,31 @@
 
 @section('content')
 
-    <div class="content">
+    <h1 class="title_page">Галерея</h1>
 
-        <div class="content-title">
-
-            <span class="category-name gallery-name">{{ trans('base.gallerycontenttitle') }}</span>
-
-            <div class="content-title-line"><div class="flower-right"></div></div>
-
-        </div>
         @foreach($gallery as $gall)
-            <div class="gallery-block">
 
-                <h2>{{ $gall -> getTranslate('title') }}</h2>
+            <div class="panel panel-default wow fadeInLeft">
 
-                <div id="gallery-photo-id-{{$gall -> id}}" class="webstudio-gallery" style="display:none;">
+                <div class="panel-heading">{{ $gall -> getTranslate('title') }}</div>
 
-                    @foreach($gall -> getImages() as $imgSrc)
+                <div class="panel-body">
 
-                        <img alt="" src="/{{ $imgSrc['min'] }}"
-                             data-image="/{{ $imgSrc['full'] }}">
+                    <div id="gallery-photo-id-{{$gall -> id}}" class="webstudio-gallery" style="display:none;">
 
-                    @endforeach
+                        @foreach($gall -> getImages() as $imgSrc)
+
+                            <img alt="" src="/{{ $imgSrc['min'] }}"
+                                 data-image="/{{ $imgSrc['full'] }}">
+
+                        @endforeach
+
+                    </div>
 
                 </div>
 
             </div>
+
         @endforeach
 
     </div>
