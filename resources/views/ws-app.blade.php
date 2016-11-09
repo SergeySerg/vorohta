@@ -2,10 +2,12 @@
 <html lang="{{ App::getLocale() }}">
 <head>
 	<meta charset="utf-8">
-	<title>Premium Club</title>
+	<title>Ворохта</title>
+{{--
 	<meta name="title" content="{{ $meta ->getTranslate('meta_title') }}">
 	<meta name="description" content="{{ $meta ->getTranslate('meta_description') }}">
 	<meta name="keywords" content="{{ $meta ->getTranslate('meta_keywords') }}">
+--}}
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,280 +21,282 @@
 	<link href="{{ asset('/css/main.css') }}?ver={{ $version }}" rel="stylesheet">
 	<link href="{{ asset('/css/fonts.css') }}" rel="stylesheet">
 	<link href="{{ asset('/libs/unitegallery/dist/css/unite-gallery.css') }}" rel="stylesheet">
+	<link href="http://azmind.com/demo/andia-agency/v2-1/assets/css/animate.css" rel="stylesheet">
 
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	<link href="{{ asset('/css/plugins/sweetalert.css') }}" rel="stylesheet">
+	<!-- Bootstrap core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/font-awesome.min.css" rel="stylesheet">
+	<link href="css/main.css?ver1" rel="stylesheet">
 
-
-
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
 </head>
 
 <body>
 
-<div class="wrapper">
+<div class="container">
 
+	<div class="row">
 
-		<div class="top-line clearfix">
+		<ul class="col-md-12 text-right lang">
 
-			<div class="top-line_sub-block sub-block-booking">
+			@foreach($langs as $lang)
+				<li><a href="{{str_replace(url(App::getLocale()), url($lang->lang), Request::url())}}">{{$lang -> lang}}</a></li>
+			@endforeach
 
-				<div class="top-line_booking"></div>
+		</ul>
 
-				<a href="/{{ App::getLocale() }}/booking">{{ trans('base.booking') }}</a>
+	</div>
 
-			</div>
+	<div class="row">
 
-			<div class="top-line_sub-block sub-block-3dtour">
+		<div class="col-md-12">
+			<nav class="navbar navbar-default">
+				<div class="container-fluid">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="/{{ App::getLocale() }}">
+							<img alt="Головна" src="../img/frontend/logo.png">
+						</a>
+					</div>
 
-				<div class="top-line_3dtour"></div>
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right r-menu">
+							<li class="active">
+								<a href="/{{ App::getLocale() }}"><i class="fa fa-home"></i><br>Головна</a>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-area-chart" aria-hidden="true"></i><br>Про Ворохту<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="/{{ App::getLocale() }}/about_us">Ворохта - історія та сьогодення</a></li>
+									<li><a href="#">Інфраструктура туристичного курорту</a></li>
+									<li><a href="#">Ворохта відпочинок взимку</a></li>
+									<li><a href="#">Ворохта відпочинок влітку</a></li>
+									<li><a href="#">Кухня, звичаї, традиції</a></li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-blind" aria-hidden="true"></i><br>Туристу<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Як добратися</a></li>
+									<li><a href="#">Заклади проживання</a></li>
+									<li><a href="#">Заклади харчування</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="#"><i class="fa fa-picture-o" aria-hidden="true"></i><br>Фотогалерея</a>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book" aria-hidden="true"></i><br>Політика<span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">Керівна ланка селищної влади</a></li>
+									<li><a href="#">Прийом громадян</a></li>
+									<li><a href="#">Регуляторна політика</a></li>
+									<li><a href="#">Податкова політика</a></li>
+									<li><a href="#">Рішення селищної ради</a></li>
+									<li><a href="#">Протоколи загальних зборів ...</a></li>
+									<li><a href="#">Розпорядження селищного голови</a></li>
+									<li><a href="#">Про-ти рішень селищної ради</a></li>
+									<li><a href="#">Державні закупівлі</a></li>
+								</ul>
+							</li>
+						</ul>
+					</div><!-- /.navbar-collapse -->
 
-				<a href="/{{ App::getLocale() }}/3dtour">{{ trans('base.tour') }}</a>
-
-			</div>
-
-			<div class="top-line_sub-block">
-
-				<div class="top-line_address"></div>
-
-				<div class="address">{{ $texts->get('header.address') }}</div>
-
-			</div>
-
-			<div class="top-line_sub-block sub-block-phones">
-
-				<div class="top-line_phones"></div>
-
-				<ul class="phones">
-
-					<li>{!!$texts->get('header.tel')!!}</li>
-					<li><span class="phone-desc">( {{ trans('base.booking') }} )</span></li>
-
-				</ul>
-
-			</div>
-
-			<div class="top-line_sub-block sub-block-lang">
-
-
-				<ul class="lang clearfix">
-				@foreach($langs as $lang)
-					<li><a href="{{str_replace(url(App::getLocale()), url($lang->lang), Request::url())}}">{{$lang -> lang}}</a></li>
-				@endforeach
-				</ul>
-
-			</div>
-
-		</div>
-
-		<div class="mnu-block">
-
-			<div id="menu">
-
-				<div id="menu-name">{{ trans('base.menu') }}</div>
-				<div id="menu-close"></div>
-
-				<ul id="menu-list">
-					<li><a href="/{{ App::getLocale() }}">{{ trans('base.hotel') }}</a></li>
-					<li><a href="/{{ App::getLocale() }}/rooms">{{ trans('base.rooms') }}</a></li>
-					<li><a href="/{{ App::getLocale() }}/services">{{ trans('base.services') }}</a></li>
-					<li><a href="/{{ App::getLocale() }}/events">{{ trans('base.events') }}</a></li>
-					<li><a href="/{{ App::getLocale() }}/gallery">{{ trans('base.gallery') }}</a></li>
-					<li><a href="/{{ App::getLocale() }}/contact">{{ trans('base.contacts') }}</a></li>
-					<li><a href="/{{ App::getLocale() }}/3dtour">{{ trans('base.tour') }}</a></li>
-					<li><a href="/{{ App::getLocale() }}/booking">{{ trans('base.booking') }}</a></li>
-				</ul>
-
-			</div>
-
-
-			<nav>
-
-				<a href="/{{ App::getLocale() }}">{{ trans('base.hotel') }}</a>
-				<a href="/{{ App::getLocale() }}/rooms">{{ trans('base.rooms') }}</a>
-				<a href="/{{ App::getLocale() }}/services">{{ trans('base.services') }}</a>
-				<a href="/{{ App::getLocale() }}/events">{{ trans('base.events') }}</a>
-				<a href="/{{ App::getLocale() }}/gallery">{{ trans('base.gallery') }}</a>
-				<a href="/{{ App::getLocale() }}/contact">{{ trans('base.contacts') }}</a>
+				</div><!-- /.container-fluid -->
 
 			</nav>
+		</div>
 
-			<div class="logo-wrap">
+	</div>
 
-				<div class="logo"><img src="{{ asset('/img/logo-header.png') }}" alt="Premium Club"></div>
+	<div class="row">
 
-				<div class="flower-left"></div>
-				<div class="hotel-name-wrap">
-					<div class="hotel-name">hotel premium club</div>
-					<div class="logo-title">Luxore HOTEL</div>
+		<div class="col-md-12">
+
+			<!-- start: Slider -->
+			<div id="webstudio-slider" style="display:none;
+											  margin-bottom: 20px;
+                                              border-radius: 5px;
+                                              box-shadow: 0 0 15px rgba(0,0,0, .15);">
+				@foreach($slides as $slide)
+
+					@if(count($slide->getImages()) > 0)
+
+						<img alt="{{$slide->getTranslate('title')}}" src="/{{$slide->getImages()[0]['full']}}"
+							 data-image="/{{$slide->getImages()[0]['full']}}"
+							 id="img-{{$slide->id}}"
+							 data-description=" {{$slide->getTranslate('description')}}"
+							 data-link="jhjhjhj111">
+
+					@endif
+
+				@endforeach
+
+			</div>
+			<!-- end: Slider -->
+
+		</div>
+
+	</div>
+
+	<!--start: Row -->
+
+	<div class="row">
+
+		<div class="col-md-8">
+
+			@yield('content')
+
+{{--
+			<div class="panel panel-default wow fadeInLeft">
+				<div class="panel-heading">Погода в Ворохті</div>
+
+				<div class="panel-body">
+					<div class="col-sm-4 col-md-3">
+						<a href="#" class="thumbnail">
+							<img src="http://www.ecml.at/Portals/1/Blog/Fotolia_53921830_Srussian.jpg" alt="...">
+						</a>
+					</div>
+					<div class="col-sm-8 col-md-9">
+						<p>EUROSTANDARD sp. z o.o. є фірма, що надає спеціалізовані послуги в сфері забезпечення персоналом
+							(аутсорсинг персоналу або лізинг працівників). На Замовлення наших клієнтів ми формуємо бригади
+							працівників відповідної спеціальності та кваліфікації та делегуємо їх для виконання завданнь
+							таких замовників. Ми беремо на себе повністю обовязки роботодавця, забезпечуючи фірмі, що
+							користується робочою силою виключно організацію виробничих процесів. Особливістю нашого підприємства
+							є те, що EUROSTANDARD sp. z o.o. є оператором надання послуг на території Польщі  нашого дочірнього
+							підприємства Приватне підприємство міжнародне кадрове агентство «Європейський Стандарт» (Україна,
+							м. Луцьк). Працівники працевлаштовані на українській фірмі та направляються у відрядження на
+							EUROSTANDARD sp. z o.o., яке, в свою чергу надає послуги польским клієнтам.
+						</p>
+						<a href="#" class="pull-right">Детальніше<i class="fa fa-angle-right fa-lg"></i></a>
+					</div>
 				</div>
-				<div class="flower-right"></div>
+			</div>
+--}}
 
+		</div>
+
+		<div class="col-md-4">
+
+			<div class="panel panel-default wow fadeInLeft">
+				<div class="panel-heading">Новини</div>
+
+				<div class="panel-body">
+					<div class="col-sm-4 col-md-3">
+						<a href="#" class="thumbnail">
+							<img src="http://www.ecml.at/Portals/1/Blog/Fotolia_53921830_Srussian.jpg" alt="...">
+						</a>
+					</div>
+					<div class="col-sm-8 col-md-9">
+						<p>EUROSTANDARD sp. z o.o. є фірма, що надає спеціалізовані послуги в сфері забезпечення персоналом
+							(аутсорсинг персоналу або лізинг працівників). На Замовлення наших клієнтів ми формуємо бригади
+							працівників відповідної спеціальності та кваліфікації та делегуємо їх для виконання завданнь
+							таких замовників. Ми беремо на себе повністю обовязки роботодавця, забезпечуючи фірмі, що
+							користується робочою силою виключно організацію виробничих процесів. Особливістю нашого підприємства
+							є те, що EUROSTANDARD sp. z o.o. є оператором надання послуг на території Польщі  нашого дочірнього
+							підприємства Приватне підприємство міжнародне кадрове агентство «Європейський Стандарт» (Україна,
+							м. Луцьк). Працівники працевлаштовані на українській фірмі та направляються у відрядження на
+							EUROSTANDARD sp. z o.o., яке, в свою чергу надає послуги польским клієнтам.
+						</p>
+						<a href="#" class="pull-right">Детальніше<i class="fa fa-angle-right fa-lg"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default wow fadeInLeft">
+				<div class="panel-heading">Реклама</div>
+
+				<div class="panel-body">
+					<div class="col-sm-4 col-md-3">
+						<a href="#" class="thumbnail">
+							<img src="http://www.ecml.at/Portals/1/Blog/Fotolia_53921830_Srussian.jpg" alt="...">
+						</a>
+					</div>
+					<div class="col-sm-8 col-md-9">
+						<p>EUROSTANDARD sp. z o.o. є фірма, що надає спеціалізовані послуги в сфері забезпечення персоналом
+							(аутсорсинг персоналу або лізинг працівників). На Замовлення наших клієнтів ми формуємо бригади
+							працівників відповідної спеціальності та кваліфікації та делегуємо їх для виконання завданнь
+							таких замовників. Ми беремо на себе повністю обовязки роботодавця, забезпечуючи фірмі, що
+							користується робочою силою виключно організацію виробничих процесів. Особливістю нашого підприємства
+							є те, що EUROSTANDARD sp. z o.o. є оператором надання послуг на території Польщі  нашого дочірнього
+							підприємства Приватне підприємство міжнародне кадрове агентство «Європейський Стандарт» (Україна,
+							м. Луцьк). Працівники працевлаштовані на українській фірмі та направляються у відрядження на
+							EUROSTANDARD sp. z o.o., яке, в свою чергу надає послуги польским клієнтам.
+						</p>
+						<a href="#" class="pull-right">Детальніше<i class="fa fa-angle-right fa-lg"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="panel panel-default wow fadeInLeft">
+				<div class="panel-heading">Коротко про нас</div>
+
+				<div class="panel-body">
+					<div class="col-sm-4 col-md-3">
+						<a href="#" class="thumbnail">
+							<img src="http://www.ecml.at/Portals/1/Blog/Fotolia_53921830_Srussian.jpg" alt="...">
+						</a>
+					</div>
+					<div class="col-sm-8 col-md-9">
+						<p>EUROSTANDARD sp. z o.o. є фірма, що надає спеціалізовані послуги в сфері забезпечення персоналом
+							(аутсорсинг персоналу або лізинг працівників). На Замовлення наших клієнтів ми формуємо бригади
+							працівників відповідної спеціальності та кваліфікації та делегуємо їх для виконання завданнь
+							таких замовників. Ми беремо на себе повністю обовязки роботодавця, забезпечуючи фірмі, що
+							користується робочою силою виключно організацію виробничих процесів. Особливістю нашого підприємства
+							є те, що EUROSTANDARD sp. z o.o. є оператором надання послуг на території Польщі  нашого дочірнього
+							підприємства Приватне підприємство міжнародне кадрове агентство «Європейський Стандарт» (Україна,
+							м. Луцьк). Працівники працевлаштовані на українській фірмі та направляються у відрядження на
+							EUROSTANDARD sp. z o.o., яке, в свою чергу надає послуги польским клієнтам.
+						</p>
+						<a href="#" class="pull-right">Детальніше<i class="fa fa-angle-right fa-lg"></i></a>
+					</div>
+				</div>
 			</div>
 
 		</div>
 
-	</header>
+	</div>
 
-	@yield('content')
-
+	<!-- Start footer -->
 	<footer>
 
-		<div class="grey-block clearfix">
+		<div class="row">
 
-			<div class="hotel-photo">
+			<div class="col-md-12">
 
-				<div class="photo"></div>
-
-				<h1>{{ trans('base.hotelphoto') }}</h1>
-
-				<div id="webstudio-bottom-gallery" style="display:none;">
-
-					@foreach($hotel -> getImages() as $imgSrc)
-
-						<img alt="" src="/{{ $imgSrc['min'] }}"
-							 data-image="/{{ $imgSrc['full'] }}">
-
-					@endforeach
-
-				</div>
+				<div class="footer-border"></div>
 
 			</div>
 
-			<div class="callback-form">
+			<div class="col-sm-6 col-md-6 wow fadeInUp">
 
-				<div class="letter"></div>
-				<h1>{{ trans('base.callback') }}</h1>
-
-				<form id="contactform" method="post">
-
-					<input id="name" name="name" placeholder="{{ trans('base.name') }}" required type="text">
-
-					<textarea name="message" id="comment"  required type="text" placeholder="{{ trans('base.message') }}"></textarea> <br>
-					<input id="email" name="email" placeholder="{{ trans('base.email') }}" required type="email"> <br>
-
-					<input name="submit" id="submit" tabindex="5" value="{{ trans('base.send') }}" type="submit">
-					<div id="token" style="display: none">{{csrf_token()}}</div>
-				</form>
-				<!--<form  id="frm"  method="post">
-
-					<label class="h6">Имя / Фамилия</label>
-					<input type="text" name="name" required="required" class="form-control">
-					<label class="h6">E-mail</label>
-					<input type="email" name="email" required="required" class="form-control">
-					<label class="h6">Сообщение</label>
-					<textarea rows="7" name="message" required="required" class="form-control"></textarea><br />
-
-					кнопка <button type="submit" class="btn btn-primary" ><span class="fui-mail"></span></button>
-					<div id="token" style="display: none">{{csrf_token()}}</div>
-				</form>-->
-			</div>
-
-		</div>
-
-		<div class="footer-mnu-block">
-
-			<div class="clearfix">
-
-				<div class="logo-wrap">
-
-					<div class="logo"><img src="{{ asset('/img/logo-footer.png') }}" alt="Premium Club"></div>
-					<div class="logo-title">Luxore HOTEL</div>
-
-				</div>
-
-				<ul class="social-block">
-					<li><a href="{!!$texts->get('social.fb')!!}" class="fb"></a></li>
-					<li><a href="{!!$texts->get('social.od')!!}" class="od"></a></li>
-					<li><a href="{!!$texts->get('social.vk')!!}" class="vk"></a></li>
-				</ul>
-
-				<ul>
-					<li><a href="/{{ App::getLocale() }}">{{ trans('base.hotel') }}</a></li>
-				</ul>
-
-				<ul>
-					<li><a href="/{{ App::getLocale() }}/rooms">{{ trans('base.rooms') }}</a></li>
-
-                    @foreach($rooms as $room)
-
-                        <li><a href="/{{ App::getLocale() }}/rooms/#room-{{ $room -> id }}">{{ $room -> getTranslate('title') }}</a></li>
-
-                    @endforeach
-
-				</ul>
-
-				<ul>
-					<li><a href="/{{ App::getLocale() }}/services">{{ trans('base.services') }}</a></li>
-
-                    @foreach($services as $service)
-
-                        <li><a href="/{{ App::getLocale() }}/services/#service-{{ $service -> id }}">{{ $service -> getTranslate('title') }}</a></li>
-
-                    @endforeach
-
-                </ul>
-
-				<ul>
-					<li><a href="/{{ App::getLocale() }}/events">{{ trans('base.events') }}</a></li>
-				</ul>
-
-				<ul>
-					<li><a href="/{{ App::getLocale() }}/gallery">{{ trans('base.gallery') }}</a></li>
-				</ul>
-
-				<ul>
-					<li><a href="/{{ App::getLocale() }}/contact">{{ trans('base.contacts') }}</a></li>
-				</ul>
+				<p style="padding-top: 20px;">© Copyright 2016 <br>Виконавчий комітет Ворохтянської селищної ради<br> 78595, Україна, вул. Д.Галицького 41 </p>
 
 			</div>
 
-			<div class="ft-line"><div class="flower-right-dark"></div></div>
+			<div class="col-sm-6 col-md-6 footer-contact wow fadeInLeft">
 
-		</div>
-
-		<div class="top-line clearfix">
-
-			<div class="top-line_sub-block sub-block-phones">
-
-				<div class="top-line_phones"></div>
-
-				<ul class="phones">
-
-                    <li>{!!$texts->get('header.tel')!!}<span class="phone-desc">( {{ trans('base.booking') }} )</span></li>
-
-				</ul>
-
-			</div>
-
-			<div class="top-line_sub-block">
-
-				<div class="top-line_address"></div>
-
-                <div class="address">{{ $texts->get('header.address') }}</div>
-
-			</div>
-
-            <div class="top-line_sub-block sub-block-3dtour">
-
-                <div class="top-line_3dtour"></div>
-
-                <a href="/{{ App::getLocale() }}/3dtour">{{ trans('base.tour') }}</a>
-
-            </div>
-
-			<div class="top-line_sub-block sub-block-booking">
-
-				<div class="top-line_booking"></div>
-
-				<a href="/{{ App::getLocale() }}/booking">{{ trans('base.booking') }}</a>
+				<img src="../img/frontend/contact.png" alt="">
 
 			</div>
 
 		</div>
 
 	</footer>
-
+	<!-- end footer -->
 </div>
+<!-- /container -->
 
 <script src="{{ asset('/libs/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('/js/common.js') }}?ver={{ $version }}"></script>
@@ -305,6 +309,13 @@
 <script src="{{ asset('/libs/unitegallery/dist/js/unitegallery.min.js') }}"></script>
 <script src="{{ asset('/js/plugins/sweetalert.min.js') }}"></script>
 
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script><!-- start: Java Script -->
+<script src="unitegallery/js/jquery-11.0.min.js"></script>
+<script src="js/bootstrap.js"></script>
+
+<script src="http://azmind.com/demo/andia-agency/v2-1/assets/js/wow.min.js" type="application/javascript"></script>
+<script>
+	new WOW().init();
+</script>
 </body>
 </html>

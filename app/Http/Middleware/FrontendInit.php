@@ -31,17 +31,17 @@ class FrontendInit {
 		// Locale setting
 		App::setLocale($request->lang);
 
-		$hotel = Category::where('link','=', 'hotel')
+		$main = Category::where('link','=', 'main')
 			->first()
 			->articles
 			->first();
-		$rooms = Category::where('link','=', 'rooms')
+		$news = Category::where('link','=', 'news')
 			->first()
 			->articles()
 			->where('active','=', '1')
 			->get()
 			->sortByDesc("priority");
-		$services = Category::where('link','=', 'services')
+		$government = Category::where('link','=', 'government')
 			->first()
 			->articles()
 			->where('active','=', 1)
@@ -66,9 +66,9 @@ class FrontendInit {
 
 		// Share to views global template variables
 		view()->share('langs', Lang::all());
-		view()->share('hotel', $hotel);
-		view()->share('rooms', $rooms);
-		view()->share('services', $services);
+		view()->share('main', $main);
+		view()->share('news', $news);
+		view()->share('government', $government);
 		view()->share('texts', $texts->init());
 		view()->share('version', config('app.version'));
         //view()->share('meta', $meta);
