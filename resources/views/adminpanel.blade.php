@@ -177,7 +177,7 @@
             <li @if(Request::is('*/tourist'))class="active"@endif>
             <a href="{{ $url }}/articles/tourist">
                 <i class="icon-hospital"></i>
-                <span class="menu-text"> Туритсту </span>
+                <span class="menu-text"> Туристу </span>
             </a>
             </li>
             <li @if(Request::is('*/gallery'))class="active"@endif>
