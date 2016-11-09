@@ -45,16 +45,8 @@ class ArticleController extends Controller {
 					->sortByDesc("priority");
 				break;
 			case 'about_us':
-                $about_us = Category::where('link','=', 'about_us')
-                    ->first()
-                    ->articles
-					->sortByDesc("priority");
 				break;
 			case 'tourist':
-                $tourist = Category::where('link','=', 'tourist')
-                    ->first()
-                    ->articles
-					->sortByDesc("priority");
 				break;
 			case 'gallery':
                 $gallery = Category::where('link','=', 'gallery')
@@ -65,12 +57,6 @@ class ArticleController extends Controller {
 					->sortByDesc("priority");
 				break;
 			case 'government':
-				$government = Category::where('link','=', 'government')
-                    ->first()
-                    ->articles()
-					->where('active','=', 1)
-					->get()
-					->sortByDesc("priority");
 				break;
 
 		}
@@ -81,9 +67,6 @@ class ArticleController extends Controller {
 		return view('frontend.'.$type, [
 			'events' => $events,
 			'gallery' => $gallery,
-			'about_us' => $about_us,
-			'tourist' => $tourist,
-			'government' => $government,
 
 		]);
 	}
