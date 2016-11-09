@@ -174,6 +174,7 @@
 					<div id="token" style="display: none">{{csrf_token()}}</div>
 				</form>
 				<!--<form  id="frm"  method="post">
+				
 
 					<label class="h6">Имя / Фамилия</label>
 					<input type="text" name="name" required="required" class="form-control">
