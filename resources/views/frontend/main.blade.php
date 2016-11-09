@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1 class="title_page">Новини</h1>
+    <h1 class="title_page">{{ trans('base.news') }}</h1>
 
     @foreach($news as $news_item)
 

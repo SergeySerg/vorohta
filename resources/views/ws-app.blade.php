@@ -2,9 +2,8 @@
 <html lang="{{ App::getLocale() }}">
 <head>
 	<meta charset="utf-8">
-	<title>Ворохта</title>
+	<title>{{ $meta ->getTranslate('meta_title') }}</title>
 	@if($meta)
-		<meta name="title" content="{{ $meta ->getTranslate('meta_title') }}">
 		<meta name="description" content="{{ $meta ->getTranslate('meta_description') }}">
 		<meta name="keywords" content="{{ $meta ->getTranslate('meta_keywords') }}">
 	@endif
@@ -55,7 +54,7 @@
 
 	<div class="row">
 
-		<div class="col-md-12">
+		<div class="col-md-12" style="z-index: 10;">
 
 			<nav class="navbar navbar-default">
 
@@ -77,7 +76,7 @@
 
 						<a class="navbar-brand" href="/{{ App::getLocale() }}">
 
-							<img alt="Головна" src="../img/frontend/logo.png">
+							<img alt="{{ trans('base.main') }}" src="../img/frontend/logo.png">
 
 						</a>
 					</div>
@@ -86,10 +85,10 @@
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right r-menu">
 							<li @if(Request::is('ua')) class="active"@endif>
-								<a href="/{{ App::getLocale() }}"><i class="fa fa-home"></i><br>Головна</a>
+								<a href="/{{ App::getLocale() }}"><i class="fa fa-home"></i><br>{{ trans('base.main') }}</a>
 							</li>
 							<li @if(Request::is('*/about_us')) class="dropdown active"@else class="dropdown"@endif>
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-area-chart" aria-hidden="true"></i><br>Про Ворохту<span class="caret"></span></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-area-chart" aria-hidden="true"></i><br>{{ trans('base.about_us') }}<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 
 									@foreach($about_us as $about_us_item)
@@ -103,7 +102,7 @@
 
 							<li class="dropdown">
 
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-blind" aria-hidden="true"></i><br>Туристу<span class="caret"></span></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-blind" aria-hidden="true"></i><br>{{ trans('base.tourist') }}<span class="caret"></span></a>
 
 								<ul class="dropdown-menu">
 
@@ -118,12 +117,12 @@
 							</li>
 
 							<li>
-								<a href="/{{ App::getLocale() }}/gallery"><i class="fa fa-picture-o" aria-hidden="true"></i><br>Фотогалерея</a>
+								<a href="/{{ App::getLocale() }}/gallery"><i class="fa fa-picture-o" aria-hidden="true"></i><br>{{ trans('base.gallery') }}</a>
 							</li>
 
 							<li class="dropdown">
 
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book" aria-hidden="true"></i><br>Влада<span class="caret"></span></a>
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-book" aria-hidden="true"></i><br>{{ trans('base.government') }}<span class="caret"></span></a>
 
 								<ul class="dropdown-menu">
 
@@ -185,12 +184,12 @@
 		<div class="col-md-4">
 
 			<div class="panel panel-default wow fadeInLeft">
-				<div class="panel-heading">Погода у Ворохті</div>
+				<div class="panel-heading">{{ trans('base.weather') }}</div>
 
 				<div class="panel-body">
 					<!-- Gismeteo informer START -->
 					<link rel="stylesheet" type="text/css" href="https://s1.gismeteo.ua/static/css/informer2/gs_informerClient.min.css">
-					<div id="gsInformerID-5vvwaYqMw08ThS" class="gsInformer" style="width:240px;height:157px; margin:auto">
+					<div id="gsInformerID-qf4442KsRjrUtm" class="gsInformer" style="width:240px;height:157px; 	margin: 0 auto;">
 						<div class="gsIContent">
 							<div id="cityLink">
 								<a href="https://www.gismeteo.ua/ua/weather-vorokhta-11858/" target="_blank">Погода у Ворохті</a>
@@ -214,16 +213,14 @@
 							</div>
 						</div>
 					</div>
-					<script src="https://www.gismeteo.ua/ajax/getInformer/?hash=5vvwaYqMw08ThS" type="text/javascript"></script>
-					<!-- Gismeteo informer END -->
-				</div>
+					<script src="https://www.gismeteo.ua/ajax/getInformer/?hash=qf4442KsRjrUtm" type="text/javascript"></script>
+					<!-- Gismeteo informer END -->				</div>
 			</div>
 
 			<div class="panel panel-default wow fadeInLeft">
-				<div class="panel-heading">Реклама</div>
+				<div class="panel-heading">{{ trans('base.advertising') }}</div>
 
 				<div class="panel-body">
-						<a href="#" class="pull-right">Детальніше<i class="fa fa-angle-right fa-lg"></i></a>
 				</div>
 			</div>
 
@@ -244,7 +241,7 @@
 
 			<div class="col-sm-6 col-md-6 wow fadeInUp">
 
-				<p style="padding-top: 20px;">© Copyright 2016 <br>Виконавчий комітет Ворохтянської селищної ради<br> 78595, Україна, вул. Д.Галицького 41 </p>
+				<p style="padding-top: 20px;">© Copyright 2016 <br>{{ trans('base.rada') }}<br>{{ trans('base.address') }}</p>
 
 			</div>
 
