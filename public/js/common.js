@@ -1,4 +1,6 @@
- $(function(){
+var pageHash = window.location.hash.substr(1);
+
+$(function(){
 
 	 $("#webstudio-slider").unitegallery({
 		 gallery_theme: "slider",
@@ -31,8 +33,9 @@
 			 tiles_type: "justified",
 		 });
 	 });
-	 
-	 $(window).on('scroll', function(){
+
+
+	$(window).on('scroll', function(){
 		 var scrollPosition = $(this).scrollTop();
 		 if(scrollPosition > 100){
 			 if(!$('.navbar').hasClass('navbar-fixed-top')){
@@ -59,5 +62,7 @@
 		 }
 	 );
 
-	 
+	$('.col-md-8').find('#' + pageHash);
+
+
  });

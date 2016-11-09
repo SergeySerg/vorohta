@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1 class="title_page">Галерея</h1>
+    <h1 class="title_page">{{ trans('base.gallery') }}</h1>
 
         @foreach($gallery as $gall)
 
@@ -28,7 +28,5 @@
             </div>
 
         @endforeach
-
-    </div>
 
 @stop

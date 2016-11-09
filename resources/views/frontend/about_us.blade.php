@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1 class="title_page">Про Ворохту</h1>
+    <h1 class="title_page">{{ trans('base.about_us') }}</h1>
 
     @foreach($about_us as $about_us_item)
 

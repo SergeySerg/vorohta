@@ -6,7 +6,7 @@
 
     @foreach($news as $news_item)
 
-        <div class="panel panel-default wow fadeInLeft">
+        <div id="news-{{$news_item -> id}}" class="panel panel-default wow fadeInLeft">
 
             <div class="panel-heading">{{ $news_item -> getTranslate('title') }}</div>
 

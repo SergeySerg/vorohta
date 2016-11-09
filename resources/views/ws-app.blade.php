@@ -2,7 +2,7 @@
 <html lang="{{ App::getLocale() }}">
 <head>
 	<meta charset="utf-8">
-	<title>{{ $meta ->getTranslate('meta_title') }}</title>
+	<title>Ворохта</title>
 	@if($meta)
 		<meta name="description" content="{{ $meta ->getTranslate('meta_description') }}">
 		<meta name="keywords" content="{{ $meta ->getTranslate('meta_keywords') }}">
@@ -128,7 +128,7 @@
 
 									@foreach($government as $government_item)
 
-										<li><a href="/{{ App::getLocale() }}/government/#$government-{{ $government_item -> id }}">{{ $government_item -> getTranslate('title') }}</a></li>
+										<li><a href="/{{ App::getLocale() }}/government/#government-{{ $government_item -> id }}">{{ $government_item -> getTranslate('title') }}</a></li>
 
 									@endforeach
 
