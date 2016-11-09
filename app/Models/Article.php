@@ -8,6 +8,7 @@ class Article extends Translate {
         'title',
         'description',
         'price',
+        'files',
         'imgs',
         'priority',
         'meta_description',
@@ -36,6 +37,15 @@ class Article extends Translate {
                 }
             }
             return $imgs ?: [];
+        }
+        else{
+            return [];
+        }
+    }
+    public function getFiles(){
+        if (isset($this->files)){
+            $files = json_decode($this->files, true);
+            return $files ?: [];
         }
         else{
             return [];

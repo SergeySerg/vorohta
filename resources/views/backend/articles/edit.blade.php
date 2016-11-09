@@ -166,6 +166,30 @@
 
                                     </div>
                                 @endforeach
+                                @if ($admin_category->hasField('files'))
+                                @if(isset($admin_article))
+                                <h4 class="header green clearfix">
+                                    Files
+                                </h4>
+                                <iframe
+                                    frameborder="0"
+                                    src="/js/backend/kcfinder/browse.php?type=files&langCode=ru&config=articles&homedir=/{{$admin_article->id}}/"
+                                    style="width: 100%; height: 400px"
+                                    title="Визуальный файловый браузер"
+                                    tabindex="0"
+                                    allowtransparency="true"></iframe>
+                                @else
+                                <div class="alert alert-warning">
+                                    <button type="button" class="close" data-dismiss="alert">
+                                        <i class="icon-remove"></i>
+                                    </button>
+                                    <strong>Увага!</strong>
+
+                                    Форма завантаження файлів до галереї буде доступною після створення даного запису (при наступному редагуванні)
+                                    <br>
+                                </div>
+                                @endif
+                                @endif
                                 @if ($admin_category->hasField('gallery'))
                                     @if(isset($admin_article))
                                     <h4 class="header green clearfix">

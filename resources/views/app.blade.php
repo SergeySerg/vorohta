@@ -5,7 +5,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>PremiumClub | Панель керування</title>
+	<title>Vorohta | Панель керування</title>
 
 	<link rel="shortcut icon" href="{{ asset('/img/favicon/favicon.ico') }}" type="image/x-icon">
 	<link rel="apple-touch-icon" href="{{ asset('/img/favicon/apple-touch-icon.png') }}">
@@ -107,8 +107,8 @@
 					<div class="row-fluid">
 						<div class="center">
 							<h1>
-								<span class="red">Premium</span>
-								<span class="white">Club</span>
+								<span class="red">Vorohta.org</span>
+								<!--<span class="white">org</span>-->
 							</h1>
 						</div>
 					</div>

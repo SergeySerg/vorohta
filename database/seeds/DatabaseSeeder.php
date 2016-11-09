@@ -316,7 +316,7 @@ class TextsSeeder extends Seeder {
             'description' => 'exampl@gmail.com',
             'priority' => '5',
         ]);
-        
+
     }
 
 }

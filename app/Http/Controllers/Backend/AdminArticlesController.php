@@ -183,7 +183,10 @@ class AdminArticlesController extends Controller {
 		$article = Article::where('id', '=', $id)->first();
 		$all = $request->all();
 		//Вытягивание картинок с папки и представление в формате json
-		$files = Storage::Files('upload/articles/'.$id.'/images/');
+		$image_files = Storage::Files('upload/articles/'.$id.'/images/');
+		$document_files = Storage::Files('upload/articles/'.$id.'/files/');
+
+
 
 		Storage::deleteDirectory('upload/articles/' . $id . '/min');
 		Storage::deleteDirectory('upload/articles/' . $id . '/full');
@@ -191,7 +194,7 @@ class AdminArticlesController extends Controller {
 		Storage::makeDirectory('upload/articles/' . $id . '/min', '0777', true, true);
 		Storage::makeDirectory('upload/articles/' . $id . '/full', '0777', true, true);
 
-		foreach($files as $key => $file){
+		foreach($image_files as $key => $file){
 			$savePathMin = str_replace('/'.$id.'/images/', '/'.$id.'/min/', $file);
 			$savePathFull = str_replace('/'.$id.'/images/', '/'.$id.'/full/', $file);
 			try{
@@ -201,20 +204,35 @@ class AdminArticlesController extends Controller {
 					->resize(320, null, function ($constraint) { $constraint->aspectRatio(); })
 					->save($savePathMin, 80);
 
-				$files[$key] = [
+				$image_files[$key] = [
 					'full' => $savePathFull,
 					'min' => $savePathMin
 				];
 			}catch(\Exception $e){
-				$files[$key] = [
+				$image_files[$key] = [
 					'full' => $file,
 					'min' => $file
 				];
 			}
 
 		}
+		foreach($document_files as $key => $file){
 
-		$all['imgs'] = json_encode($files);
+			$url = $document_files[$key];
+			$url_arr = explode('/', $url);
+			$filename = $url_arr[count($url_arr)-1];
+			$filename_arr = explode('.', $filename);
+			$ext = $filename_arr[count($filename_arr)-1];
+
+			$document_files[$key] = [
+				'url' => $url,
+				'filename' => $filename,
+				'ext' => $ext,
+			];
+		}
+
+		$all['files'] = json_encode($document_files);
+		$all['imgs'] = json_encode($image_files);
 		//Очистка масссива от title_ua,ru,en и т д
 		$all = $this->prepareArticleData($all);
 
@@ -273,13 +291,13 @@ class AdminArticlesController extends Controller {
 
 			return response()->json([
 				"status" => 'success',
-				"message" => 'Успешно удален'
+				"message" => 'Успішно видалено'
 			]);
 		}
 		else{
 			return response()->json([
 				"status" => 'error',
-				"message" => 'Произошла ошибка при удалении'
+				"message" => 'Виникла помилка при видаленні'
 			]);
 		}
 		//return $article->title;
