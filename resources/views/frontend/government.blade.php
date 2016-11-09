@@ -4,22 +4,21 @@
 
     <h1 class="title_page">Влада</h1>
 
-{{--
-    @foreach($about_us as $about_us_item)
+
+    @foreach($government as $government_item)
 
         <div class="panel panel-default wow fadeInLeft">
 
-            <div class="panel-heading">{{ $about_us_item -> getTranslate('title') }}</div>
+            <div class="panel-heading">{{ $government_item -> getTranslate('title') }}</div>
 
             <div class="panel-body">
 
-                    {!!  $about_us_item -> getTranslate('description') !!}
+                    {!!  $government_item -> getTranslate('description') !!}
 
             </div>
 
         </div>
 
     @endforeach
---}}
 
 @endsection
