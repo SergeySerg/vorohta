@@ -2,7 +2,12 @@
 <html lang="{{ App::getLocale() }}">
 <head>
 	<meta charset="utf-8">
-	<title>@if(isset($meta)){{ $meta ->getTranslate('meta_title') }}@elseВорохта@endif</title>
+	<title>
+		@if(($meta ->getTranslate('meta_title')))
+			{{ $meta ->getTranslate('meta_title') }}
+		@else Ворохта
+		@endif
+	</title>
 
 	@if(isset($meta))
 		<meta name="description" content="{{ $meta ->getTranslate('meta_description') }}">
@@ -78,7 +83,7 @@
 
 						<a class="navbar-brand" href="/{{ App::getLocale() }}">
 
-							<img alt="{{ trans('base.main') }}" src="../img/frontend/logo.png">
+							<img alt="{{ trans('base.main') }}" src="/img/frontend/logo.png">
 
 						</a>
 					</div>
@@ -95,7 +100,7 @@
 
 									@foreach($about_us as $about_us_item)
 
-										<li><a href="/{{ App::getLocale() }}/about_us/#about_us-{{ $about_us_item -> id }}">{{ $about_us_item -> getTranslate('title') }}</a></li>
+										<li><a href="/{{ App::getLocale() }}/about_us/article-{{ $about_us_item -> id }}">{{ $about_us_item -> getTranslate('title') }}</a></li>
 
 									@endforeach
 
@@ -110,7 +115,7 @@
 
 									@foreach($tourist as $tourist_item)
 
-										<li><a href="/{{ App::getLocale() }}/tourist/#tourist-{{ $tourist_item -> id }}">{{ $tourist_item -> getTranslate('title') }}</a></li>
+										<li><a href="/{{ App::getLocale() }}/tourist/article-{{ $tourist_item -> id }}">{{ $tourist_item -> getTranslate('title') }}</a></li>
 
 									@endforeach
 
@@ -130,7 +135,7 @@
 
 									@foreach($government as $government_item)
 
-										<li><a href="/{{ App::getLocale() }}/government/#government-{{ $government_item -> id }}">{{ $government_item -> getTranslate('title') }}</a></li>
+										<li><a href="/{{ App::getLocale() }}/government/article-{{ $government_item -> id }}">{{ $government_item -> getTranslate('title') }}</a></li>
 
 									@endforeach
 
