@@ -80,9 +80,10 @@ class ArticleController extends Controller {
 	public function show($lang, $id)
 	{
 		$article = Article::find($id);
-/*		dd($article);*/
+		$meta = view()->share('meta', Article::where('id', '=', $id)->first());
 		return view('frontend.article', [
-			'article' => $article
+			'article' => $article,
+			'meta' => $meta
 		]);
 		
 	}
