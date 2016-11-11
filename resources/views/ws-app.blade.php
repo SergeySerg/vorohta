@@ -3,11 +3,13 @@
 <head>
 	<meta charset="utf-8">
 	<title>Ворохта</title>
+{{--
 	@if($meta)
 		<meta name="title" content="{{ $meta ->getTranslate('meta_title') }}">
 		<meta name="description" content="{{ $meta ->getTranslate('meta_description') }}">
 		<meta name="keywords" content="{{ $meta ->getTranslate('meta_keywords') }}">
 	@endif
+--}}
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">

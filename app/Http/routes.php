@@ -83,7 +83,7 @@ Route::group(['middleware' => 'frontend.init'], function(){
 	Route::get('/{lang}/booking', 'Frontend\BookingController@index');
 	Route::get('/{lang}/3dtour', 'Frontend\TourController@index');
 	Route::get('/{lang}/{type?}', 'Frontend\ArticleController@index')->where('type', 'main|government|about_us|tourist|gallery|news|advertising');
-	Route::get('/{lang}/{type}/{id}', 'Frontend\ItemController@index')->where('type', 'government|about_us|tourist|news|advertising');
+	Route::get('/{lang}/article-{id}', 'Frontend\ArticleController@show');
 });
 
 

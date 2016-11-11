@@ -89,6 +89,22 @@ class ArticleController extends Controller {
 	}
 
 	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function show($lang, $id)
+	{
+		$article = Article::find($id);
+/*		dd($article);*/
+		return view('frontend.article', [
+			'article' => $article
+		]);
+		
+	}
+
+	/**
 	 * Show the form for creating a new resource.
 	 *
 	 * @return Response
@@ -108,16 +124,6 @@ class ArticleController extends Controller {
 		//
 	}
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
 
 	/**
 	 * Show the form for editing the specified resource.
