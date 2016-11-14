@@ -63,7 +63,6 @@ class ArticleController extends Controller {
 
 		$meta = view()->share('meta', Article::where('name', '=', 'meta.'.$type)->first());
 
-
 		return view('frontend.'.$type, [
 			'events' => $events,
 			'gallery' => $gallery,
