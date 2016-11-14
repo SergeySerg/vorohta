@@ -13,6 +13,18 @@
 
                 {!! $article->getTranslate('description') !!}
 
+                <div id="gallery-photo-id-{{$article -> id}}" class="webstudio-gallery" style="display:none;">
+
+                    @foreach($article -> getImages() as $imgSrc)
+
+                        <img alt="" src="/{{ $imgSrc['min'] }}"
+                             data-image="/{{ $imgSrc['full'] }}">
+
+                    @endforeach
+
+                </div>
+
+
             </div>
 
         </div>
