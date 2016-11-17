@@ -44,6 +44,7 @@
                             <option>
                             </option><option value="input" selected="selected">Звичайне поле
                             </option><option value="textarea">Текстве поле
+                            </option><option value="textarea-no-wysiwyg">Текстве поле(без редактора)
                             </option><option value="settings">Налаштування
                             </option></select>
                     </div>

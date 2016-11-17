@@ -65,6 +65,8 @@
                                         <option>
                                         </option><option value="input" @if($admin_text->type == 'input')selected="selected"@endif>Звичайне поле
                                         </option><option value="textarea" @if($admin_text->type == 'textarea')selected="selected"@endif>Текстове поле
+                                        </option><option value="textarea-no-wysiwyg" @if($admin_text->type == 'textarea-no-wysiwyg')selected="selected"@endif>Текстове поле (без редактора)
+                                        </option><option value="settings" @if($admin_text->type == 'settings')selected="selected"@endif>Налаштування
                                         </option><option value="settings" @if($admin_text->type == 'settings')selected="selected"@endif>Налаштування
                                         </option></select>
                                 </div>
@@ -132,7 +134,13 @@
                             <div class="control-group">
                                 <textarea name="description" class="span12" id="description" placeholder="Опис">{{ $admin_text->description }}</textarea>
                             </div>
+                        @elseif ($admin_text->type == 'textarea-no-wysiwyg' )
+                            <h4 class="header blue clearfix">{{$admin_text->title}}</h4>
+                            <div class="control-group">
+                                <textarea name="description" class="span12 no-wysiwyg" id="description" placeholder="Опис">{{ $admin_text->description }}</textarea>
+                            </div>
                         @endif
+
                     @else
                         <div class="tabbable">
                             <ul class="nav nav-tabs" id="myTab2">

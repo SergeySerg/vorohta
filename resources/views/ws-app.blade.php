@@ -279,6 +279,8 @@
 <script src="{{ asset('js/bootstrap.js') }}"></script>
 
 <script src="http://azmind.com/demo/andia-agency/v2-1/assets/js/wow.min.js" type="application/javascript"></script>
+{!!$texts->get('code.footer')!!}
+
 <script>
 	new WOW().init();
 </script>
