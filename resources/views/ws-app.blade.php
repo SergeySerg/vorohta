@@ -253,7 +253,7 @@
 
 			<div class="col-sm-6 col-md-6 footer-contact wow fadeInLeft">
 
-				<img src="../img/frontend/contact.png" alt="">
+				<img src="/img/frontend/contact.png" alt="">
 
 			</div>
 
