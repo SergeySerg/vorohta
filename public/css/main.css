@@ -237,6 +237,28 @@ img.img_left_center {
     margin: 5px 10px 5px 0;
     border: 3px solid #9bb36f;
 }
+/*style for pagination*/
+.pagination>.active>a,
+.pagination>.active>a:focus,
+.pagination>.active>a:hover,
+.pagination>.active>span,
+.pagination>.active>span:focus,
+.pagination>.active>span:hover {
+    background-color: #9BB36E;
+    border-color: #9BB36E;
+}
+.pagination>li>a:focus,
+.pagination>li>a:hover,
+.pagination>li>span:focus,
+.pagination>li>span:hover {
+    color: #9BB36E;
+    border-color: #9BB36E;
+}
+.pagination>li>a, .pagination>li>span {
+    color: #9BB36E;
+    border: 1px solid #9BB36E;
+}
+/*END style for pagination*/
 @media (max-width: 991px){
     footer img{
         width: 100%;

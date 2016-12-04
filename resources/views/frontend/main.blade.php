@@ -52,4 +52,8 @@
 
     @endforeach
 
+    <nav class="text-center" aria-label="Page navigation">
+        {!! $news->render() !!}
+    </nav>
+
 @endsection

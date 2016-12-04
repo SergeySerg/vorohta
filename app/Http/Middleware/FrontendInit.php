@@ -5,6 +5,8 @@ use App;
 
 use App\Models\Article;
 use App\Models\Category;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 use App\Models\Text;
 use App\Models\Lang;
 use League\Flysystem\Config;
@@ -39,8 +41,8 @@ class FrontendInit {
 			->first()
 			->articles()
 			->where('active','=', '1')
-			->get()
-			->sortByDesc("priority");
+			->orderBy("priority", 'desc')
+			->paginate(5);
 		$about_us = Category::where('link','=', 'about_us')
 			->first()
 			->articles()
